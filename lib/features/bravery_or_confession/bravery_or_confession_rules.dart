@@ -17,7 +17,7 @@ class BraveryOrConfessionRules extends StatelessWidget {
               Image.asset(
                 "assets/images/app_name_dark.png",
                 width: 300,
-                height: (MediaQuery.of(context).size.height * 0.18),
+                height: MediaQuery.sizeOf(context).height * 0.18,
               ),
               // Main orange card container
               Expanded(
@@ -36,7 +36,7 @@ class BraveryOrConfessionRules extends StatelessWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
+                          color: Colors.black.withValues(alpha: 0.2),
                           blurRadius: 12,
                           offset: const Offset(0, 6),
                         ),

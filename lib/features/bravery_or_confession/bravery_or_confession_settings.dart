@@ -1,3 +1,5 @@
+import 'package:aphero/features/bravery_or_confession/section_label.dart';
+import 'package:aphero/features/bravery_or_confession/select_button.dart';
 import 'package:flutter/material.dart';
 import 'package:aphero/main.dart';
 import 'package:aphero/features/bravery_or_confession/bravery_or_confession_game.dart';
@@ -15,7 +17,6 @@ class GameSetting {
   });
 }
 
-// This instance will be accessible everywhere this file is imported
 GameSetting gameSetting = GameSetting(nbQuestion: 50, difficulty: 2, style: "Aléatoire");
 
 class BraveryOrConfessionSettings extends StatefulWidget {
@@ -36,28 +37,18 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
           alignment: Alignment.center,
-          child: SingleChildScrollView(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: MediaQuery.of(context).size.height * 0.9,
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppColors.accent, width: 2),
-              ),
+          child: FractionallySizedBox(        
+            widthFactor: 0.9,
+            heightFactor: 0.9,
+            child: Card(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Header
                   Row(
                     children: [
                       Container(
@@ -100,9 +91,8 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                     ],
                   ),
                   const SizedBox(height: 22),
-
-                  // Nombre de Questions
-                  const _SectionLabel("Nombre de Questions :"),
+          
+                  const SectionLabel("Nombre de Questions :"),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -111,7 +101,7 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                       return Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: _SelectButton(
+                          child: SelectButton(
                             label: q.toString(),
                             selected: selected,
                             onTap: () => setState(() {
@@ -124,9 +114,8 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                     }).toList(),
                   ),
                   const SizedBox(height: 18),
-
-                  // Niveau de Difficultés
-                  const _SectionLabel("Niveau de Difficultés :"),
+          
+                  const SectionLabel("Niveau de Difficultés :"),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -135,7 +124,7 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                       return Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: _SelectButton(
+                          child: SelectButton(
                             label: "+" * d,
                             selected: selected,
                             onTap: () => setState(() {
@@ -148,9 +137,8 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                     }).toList(),
                   ),
                   const SizedBox(height: 18),
-
-                  // Styles des Questions
-                  const _SectionLabel("Styles des Questions :"),
+          
+                  const SectionLabel("Styles des Questions :"),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -159,7 +147,7 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                       return Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: _SelectButton(
+                          child: SelectButton(
                             label: s,
                             selected: selected,
                             onTap: () => setState(() {
@@ -172,13 +160,11 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
                     }).toList(),
                   ),
                   const SizedBox(height: 22),
-
-                  // Lancer ce jeu Button
+          
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigate to the game page with selected settings
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -205,66 +191,8 @@ class _BraveryOrConfessionSettingsState extends State<BraveryOrConfessionSetting
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SectionLabel extends StatelessWidget {
-  final String text;
-  const _SectionLabel(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        color: AppColors.textLight,
-        fontWeight: FontWeight.bold,
-        fontSize: 16,
-      ),
-      textAlign: TextAlign.center,
-    );
-  }
-}
-
-class _SelectButton extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _SelectButton({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-        decoration: BoxDecoration(
-          color: selected ? AppColors.accent : AppColors.background,
-          border: Border.all(
-            color: selected ? AppColors.accent : AppColors.textLight,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: Text(
-          label,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: selected ? AppColors.textDark : AppColors.textLight,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),
-        ),
-      ),
+        )
+      )
     );
   }
 }
