@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:aphero/features/bravery_or_confession/bravery_or_confession_settings.dart';
 import 'package:aphero/main.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:aphero/features/shared/soldier_menu.dart';
 
 // Helper model for a question
 class BoCQuestion {

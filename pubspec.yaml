@@ -20,4 +20,11 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/fonts/
   uses-material-design: true
+  fonts:
+    - family: chau philomene
+      fonts:
+        - asset: assets/fonts/chauphilomene.ttf
+        - asset: assets/fonts/chauphilomeneitalic.ttf
+          style: italic
