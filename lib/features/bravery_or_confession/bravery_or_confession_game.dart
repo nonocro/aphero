@@ -67,7 +67,7 @@ class BraveryOrConfessionGame extends ConsumerWidget {
               const SizedBox(height: 10),
               Text(
                 soldiers.isNotEmpty
-                    ? soldiers[Random().nextInt(soldiers.length)].name
+                    ? soldiers[ref.watch(gameSettingsProvider).gameSettings.turn % soldiers.length].name
                     : "No soldiers available",
                 style: TextStyle(
                   color: appColors.textLight,
@@ -92,7 +92,7 @@ class BraveryOrConfessionGame extends ConsumerWidget {
                             label: "Bravoure",
                             frontLabelColor: appColors.textDark,
                             backTextColor: appColors.textDark,
-                            question: questionText,
+                            question: questionText.replaceAll('@user_name', soldiers[ref.watch(gameSettingsProvider).gameSettings.turn % soldiers.length].name),
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -105,7 +105,7 @@ class BraveryOrConfessionGame extends ConsumerWidget {
                             backTextColor: appColors.textLight,
                             icon: Icons.theater_comedy,
                             label: "Confession",
-                            question: questionText,
+                            question: questionText.replaceAll('@user_name', soldiers[ref.watch(gameSettingsProvider).gameSettings.turn % soldiers.length].name),
                           ),
                         ),
                       ],
