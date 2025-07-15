@@ -4,15 +4,59 @@ import 'package:aphero/features/shared/game_menu.dart';
 import 'package:aphero/theme/app_colors_extension.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SoldierMenu extends ConsumerWidget {
-  SoldierMenu({super.key});
-
-  final TextEditingController _titleController = TextEditingController();
+class SoldierMenu extends ConsumerStatefulWidget {
+  const SoldierMenu({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SoldierMenu> createState() => _SoldierMenuState();
+}
+
+class _SoldierMenuState extends ConsumerState<SoldierMenu> {
+  final TextEditingController _titleController = TextEditingController();
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+
+  final List<Soldier> _animatedSoldiers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final initialSoldiers = ref.read(soldiersProvider).soldiers;
+      Future.delayed(const Duration(milliseconds: 200), () {
+        for (int i = 0; i < initialSoldiers.length; i++) {
+          Future.delayed(Duration(milliseconds: i * 150), () {
+            if (_listKey.currentState != null) {
+              _animatedSoldiers.add(initialSoldiers[i]);
+              _listKey.currentState!.insertItem(i);
+            }
+          });
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    super.dispose();
+  }
+
+  void _addSoldierTitle() {
+    final newTitle = _titleController.text.trim();
+    if (newTitle.isNotEmpty) {
+      final newSoldier = Soldier(name: newTitle, points: 0);
+      ref.read(soldiersProvider.notifier).addSoldier(newTitle);
+
+      final int newIndex = _animatedSoldiers.length;
+      _animatedSoldiers.add(newSoldier);
+      _listKey.currentState!.insertItem(newIndex, duration: const Duration(milliseconds: 600));
+      _titleController.clear();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final appColors = context.appColors;
-    List<Soldier> soldiers = ref.watch(soldiersProvider).soldiers;
 
     return SafeArea(
       child: Scaffold(
@@ -28,11 +72,11 @@ class SoldierMenu extends ConsumerWidget {
               ),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               child: Column(
-                mainAxisSize: MainAxisSize.min, // This keeps the Column height minimal
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start, // Align images at the top of the row
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
                         "assets/images/logo_light.png",
@@ -47,9 +91,7 @@ class SoldierMenu extends ConsumerWidget {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 20),
-
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -83,7 +125,7 @@ class SoldierMenu extends ConsumerWidget {
                       ),
                       const SizedBox(width: 8),
                       InkWell(
-                        onTap: () => _addSoldierTitle(ref),
+                        onTap: _addSoldierTitle,
                         child: Container(
                           decoration: BoxDecoration(
                             color: appColors.accentLight,
@@ -102,46 +144,50 @@ class SoldierMenu extends ConsumerWidget {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 16),
-
                   Expanded(
-                    child: soldiers.isEmpty
+                    child: _animatedSoldiers.isEmpty && ref.watch(soldiersProvider).soldiers.isEmpty
                         ? const Center(
-                          child: Text(
+                            child: Text(
                               "Aucun soldat ajouté pour l’instant",
                               style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
                             ),
                           )
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: soldiers.length,
-                            itemBuilder: (context, index) {
-                              final title = soldiers[index].name;
-                              return Container(
-                                margin: const EdgeInsets.only(bottom: 6),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: appColors.accent,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  title,
-                                  style: TextStyle(
-                                    color: appColors.textDark,
-                                    fontWeight: FontWeight.bold,
+                        : AnimatedList(
+                            key: _listKey,
+                            initialItemCount: _animatedSoldiers.length,
+                            itemBuilder: (context, index, animation) {
+                              final title = _animatedSoldiers[index].name;
+                              return FadeTransition(
+                                opacity: animation,
+                                child: SizeTransition(
+                                  sizeFactor: animation,
+                                  axisAlignment: -1.0,
+                                  child: Container(
+                                    width: double.infinity,
+                                    margin: const EdgeInsets.only(bottom: 6),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 8,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: appColors.accent,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Text(
+                                      title,
+                                      style: TextStyle(
+                                        color: appColors.textDark,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );
                             },
                           ),
                   ),
-
                   const SizedBox(height: 10),
-
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -153,8 +199,7 @@ class SoldierMenu extends ConsumerWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: appColors.textDark,
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
@@ -172,15 +217,7 @@ class SoldierMenu extends ConsumerWidget {
             ),
           ),
         ),
-      )
+      ),
     );
-  }
-
-  void _addSoldierTitle(WidgetRef ref) {
-    final newTitle = _titleController.text.trim();
-    if (newTitle.isNotEmpty) {
-      ref.read(soldiersProvider.notifier).addSoldier(newTitle);
-      _titleController.clear();
-    }
   }
 }
