@@ -1,6 +1,6 @@
 import 'package:aphero/features/shared/game_menu.dart';
+import 'package:aphero/theme/app_colors_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:aphero/main.dart';
 
 class VictoryScreen extends StatefulWidget {
   final Map<String, int> soldierPunishments;
@@ -48,15 +48,11 @@ class _VictoryScreenState extends State<VictoryScreen>
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = AppColors.background;
-    const rankingBackgroundColor = AppColors.accent;
-    const textColor = AppColors.textDark;
-    const lightTextColor = AppColors.textLight;
-
+    final appColors = context.appColors;
     final sortedRanking = _getSortedRanking(widget.soldierPunishments);
 
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: appColors.background,
       body: ScaleTransition(
         scale: _animation,
         child: Column(
@@ -64,7 +60,7 @@ class _VictoryScreenState extends State<VictoryScreen>
             Expanded(
               flex: 1,
               child: Container(
-                color: backgroundColor,
+                color: appColors.background,
                 child: Center(
                   child: Image.asset(
                     "assets/images/victory.png",
@@ -75,19 +71,19 @@ class _VictoryScreenState extends State<VictoryScreen>
               ),
             ),
             Container(
-              color: rankingBackgroundColor,
+              color: appColors.accent,
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       "Classement Général",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: lightTextColor,
+                        color: appColors.textLight,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -110,17 +106,17 @@ class _VictoryScreenState extends State<VictoryScreen>
                                   width: 40,
                                   height: 40,
                                   decoration: BoxDecoration(
-                                    color: rankingBackgroundColor,
+                                    color: appColors.accent,
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: lightTextColor, width: 1.5)
+                                    border: Border.all(color:Colors.white, width: 1.5)
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
                                     rank.toString(),
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: lightTextColor,
+                                      color: appColors.textLight,
                                     ),
                                   ),
                                 ),
@@ -132,14 +128,14 @@ class _VictoryScreenState extends State<VictoryScreen>
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(color: textColor, width: 1.5)
+                                      border: Border.all(color: Colors.black, width: 1.5)
                                     ),
                                     child: Text(
                                       soldierEntry.key,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: textColor,
+                                        color: appColors.textDark,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -151,14 +147,14 @@ class _VictoryScreenState extends State<VictoryScreen>
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: textColor, width: 1.5)
+                                    border: Border.all(color: Colors.black, width: 1.5)
                                   ),
                                   child: Text(
                                     "${soldierEntry.value} gl${soldierEntry.value > 1 ? '' : ''}",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: textColor,
+                                      color: appColors.textDark,
                                     ),
                                   ),
                                 ),
@@ -179,8 +175,8 @@ class _VictoryScreenState extends State<VictoryScreen>
                           );  
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: backgroundColor,
-                          foregroundColor: lightTextColor,
+                          backgroundColor: appColors.accent,
+                          foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                           textStyle: const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -188,7 +184,7 @@ class _VictoryScreenState extends State<VictoryScreen>
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
-                            side: const BorderSide(color: lightTextColor, width: 2)
+                            side: const BorderSide(color: Colors.white, width: 2)
                           ),
                         ),
                         child: const Text("Retour au Menu"),

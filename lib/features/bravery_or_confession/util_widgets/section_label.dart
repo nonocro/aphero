@@ -1,5 +1,5 @@
+import 'package:aphero/theme/app_colors_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:aphero/main.dart';
 
 class SectionLabel extends StatelessWidget {
   final String text;
@@ -7,10 +7,12 @@ class SectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = context.appColors;
+
     return Text(
       text,
-      style: const TextStyle(
-        color: AppColors.textLight,
+      style: TextStyle(
+        color: appColors.textLight,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),

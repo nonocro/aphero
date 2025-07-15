@@ -1,4 +1,4 @@
-import 'package:aphero/main.dart';
+import 'package:aphero/theme/app_colors_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:aphero/features/bravery_or_confession/bravery_or_confession_settings.dart';
 
@@ -7,31 +7,29 @@ class BraveryOrConfessionRules extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = context.appColors;
+
     return Scaffold(
-      backgroundColor: AppColors.background, // black
+      backgroundColor: appColors.background, // black
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
-              // App name image at the top
               Image.asset(
                 "assets/images/app_name_dark.png",
                 width: 300,
                 height: MediaQuery.sizeOf(context).height * 0.18,
               ),
-              // Main orange card container
               Expanded(
                 child: Center(
                   child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: AppColors.accent,
+                      color: appColors.accent,
                       borderRadius: BorderRadius.circular(24),
                       border: Border.all(
-                        color: AppColors.accent,
+                        color: appColors.accent,
                         width: 5,
                       ),
                       boxShadow: [
@@ -45,11 +43,10 @@ class BraveryOrConfessionRules extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // Title
-                        const Text(
+                        Text(
                           'Bravoure ou Confession',
                           style: TextStyle(
-                            color: AppColors.textDark,
+                            color: appColors.textDark,
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1.2,
@@ -57,11 +54,10 @@ class BraveryOrConfessionRules extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 32),
-                        // Description
-                        const Text(
+                        Text(
                           "Oyez, oyez !\nIci, un héros sera choisi ! Il devra décider : agir avec bravoure ou dire la vérité ! S’il refuse les deux, qu’il boive trois grandes gorgées sous les rires de l’assemblée !\nÀ qui le tour ?",
                           style: TextStyle(
-                            color: AppColors.textDark,
+                            color: appColors.textDark,
                             fontSize: 20,
                             height: 1.4,
                             fontWeight: FontWeight.w600,
@@ -69,13 +65,12 @@ class BraveryOrConfessionRules extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 48),
-                        // Footer Button
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.containerBackground,
-                              foregroundColor: AppColors.textDark,
+                              backgroundColor: appColors.containerBackground,
+                              foregroundColor: appColors.textDark,
                               padding: const EdgeInsets.symmetric(vertical: 18),
                               textStyle: const TextStyle(
                                 fontSize: 20,
@@ -84,21 +79,20 @@ class BraveryOrConfessionRules extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                                 side: const BorderSide(
-                                  color: AppColors.background,
+                                  color: Colors.black,
                                   width: 2,
                                 ),
                               ),
                               side: const BorderSide(
-                                color: AppColors.background,
+                                color: Colors.black,
                                 width: 2,
                               ),
                             ),
                             onPressed: () {
-                              // Navigate to the game page
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const BraveryOrConfessionSettings(),
+                                  builder: (_) => BraveryOrConfessionSettings(),
                                 ),
                               );
                             },

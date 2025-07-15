@@ -1,4 +1,4 @@
-import 'package:aphero/main.dart';
+import 'package:aphero/theme/app_colors_extension.dart';
 import 'package:flutter/material.dart';
 
 class SelectButton extends StatelessWidget {
@@ -14,15 +14,17 @@ class SelectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = context.appColors;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
         decoration: BoxDecoration(
-          color: selected ? AppColors.accent : AppColors.background,
+          color: selected ? appColors.accent : appColors.background,
           border: Border.all(
-            color: selected ? AppColors.accent : AppColors.textLight,
+            color: selected ? appColors.accent : appColors.textLight,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(18),
@@ -31,7 +33,7 @@ class SelectButton extends StatelessWidget {
           label,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: selected ? AppColors.textDark : AppColors.textLight,
+            color: selected ? appColors.textDark : appColors.textLight,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
