@@ -1,0 +1,242 @@
+[
+  {
+    "category": "Histoire",
+    "question": "En quelle année a eu lieu la Révolution française ?",
+    "difficulty": 1,
+    "options": ["1789", "1799", "1689", "1815"]
+  },
+  {
+    "category": "Histoire",
+    "question": "Qui était le roi de France lors de la construction de Versailles ?",
+    "difficulty": 2,
+    "options": ["Louis XIV", "Louis XVI", "François Ier", "Henri IV"]
+  },
+  {
+    "category": "Histoire",
+    "question": "Quel traité a mis fin à la Première Guerre mondiale ?",
+    "difficulty": 2,
+    "options": ["Traité de Versailles", "Traité de Paris", "Traité de Rome", "Traité de Tordesillas"]
+  },
+  {
+    "category": "Histoire",
+    "question": "Quel célèbre empereur français fut exilé sur l’île d’Elbe ?",
+    "difficulty": 1,
+    "options": ["Napoléon Bonaparte", "Louis-Philippe", "Louis XVI", "Charlemagne"]
+  },
+  {
+    "category": "Géographie",
+    "question": "Quelle est la plus longue rivière de France ?",
+    "difficulty": 1,
+    "options": ["La Loire", "La Seine", "Le Rhône", "La Garonne"]
+  },
+  {
+    "category": "Géographie",
+    "question": "Quel département français porte le numéro 75 ?",
+    "difficulty": 2,
+    "options": ["Paris", "Marseille", "Lyon", "Toulouse"]
+  },
+  {
+    "category": "Géographie",
+    "question": "Quel est le plus haut sommet de l’Europe occidentale ?",
+    "difficulty": 1,
+    "options": ["Mont Blanc", "Mont Everest", "Mont Ventoux", "Mont Fuji"]
+  },
+  {
+    "category": "Géographie",
+    "question": "De quel pays la ville de Reykjavik est-elle la capitale ?",
+    "difficulty": 2,
+    "options": ["Islande", "Norvège", "Suède", "Finlande"]
+  },
+  {
+    "category": "Littérature",
+    "question": "Qui a écrit 'Les Misérables' ?",
+    "difficulty": 1,
+    "options": ["Victor Hugo", "Gustave Flaubert", "Émile Zola", "Albert Camus"]
+  },
+  {
+    "category": "Littérature",
+    "question": "Dans quelle œuvre trouve-t-on le personnage de Cyrano de Bergerac ?",
+    "difficulty": 2,
+    "options": ["Cyrano de Bergerac (Edmond Rostand)", "Le Horla", "L'Étranger", "Les Fleurs du Mal"]
+  },
+  {
+    "category": "Littérature",
+    "question": "Quel écrivain a créé le personnage d’Arsène Lupin ?",
+    "difficulty": 2,
+    "options": ["Maurice Leblanc", "Arthur Conan Doyle", "Jules Verne", "Georges Simenon"]
+  },
+  {
+    "category": "Littérature",
+    "question": "Quel roman commence par la célèbre phrase « Aujourd’hui, maman est morte » ?",
+    "difficulty": 2,
+    "options": ["L’Étranger", "Germinal", "Madame Bovary", "Le Père Goriot"]
+  },
+  {
+    "category": "Science",
+    "question": "Qui a découvert la pénicilline ?",
+    "difficulty": 3,
+    "options": ["Alexander Fleming", "Louis Pasteur", "Marie Curie", "Albert Einstein"]
+  },
+  {
+    "category": "Science",
+    "question": "Quel élément chimique a pour symbole 'Au' ?",
+    "difficulty": 2,
+    "options": ["Or", "Argent", "Fer", "Uranium"]
+  },
+  {
+    "category": "Science",
+    "question": "Quel est l’organe principal du système circulatoire ?",
+    "difficulty": 1,
+    "options": ["Le cœur", "Le cerveau", "Le foie", "Le poumon"]
+  },
+  {
+    "category": "Science",
+    "question": "À quelle température l’eau bout-elle à pression atmosphérique standard ?",
+    "difficulty": 1,
+    "options": ["100°C", "0°C", "37°C", "212°C"]
+  },
+  {
+    "category": "Arts",
+    "question": "Qui a peint 'La Liberté guidant le peuple' ?",
+    "difficulty": 2,
+    "options": ["Eugène Delacroix", "Claude Monet", "Vincent van Gogh", "Pablo Picasso"]
+  },
+  {
+    "category": "Arts",
+    "question": "Dans quelle ville se trouve le musée du Louvre ?",
+    "difficulty": 1,
+    "options": ["Paris", "Lyon", "Marseille", "Nice"]
+  },
+  {
+    "category": "Arts",
+    "question": "Quel artiste a signé le tableau 'La Nuit étoilée' ?",
+    "difficulty": 2,
+    "options": ["Vincent van Gogh", "Henri Matisse", "Paul Cézanne", "Salvador Dalí"]
+  },
+  {
+    "category": "Arts",
+    "question": "Quel courant artistique est représenté par Monet, Renoir et Degas ?",
+    "difficulty": 3,
+    "options": ["Impressionnisme", "Cubisme", "Surréalisme", "Fauvisme"]
+  },
+  {
+    "category": "Cinéma",
+    "question": "Quel réalisateur français a tourné 'Amélie Poulain' ?",
+    "difficulty": 2,
+    "options": ["Jean-Pierre Jeunet", "Luc Besson", "François Truffaut", "Jacques Audiard"]
+  },
+  {
+    "category": "Cinéma",
+    "question": "Quel acteur incarne le commissaire Maigret dans la série française ?",
+    "difficulty": 3,
+    "options": ["Bruno Cremer", "Jean Reno", "Gérard Depardieu", "Daniel Auteuil"]
+  },
+  {
+    "category": "Cinéma",
+    "question": "Pour quel film Marion Cotillard a-t-elle remporté l’Oscar de la meilleure actrice ?",
+    "difficulty": 2,
+    "options": ["La Môme", "Inception", "De rouille et d’os", "Jeux d’enfants"]
+  },
+  {
+    "category": "Cinéma",
+    "question": "Quel film d’animation français met en scène un rat cuisinier ?",
+    "difficulty": 1,
+    "options": ["Ratatouille", "Le Roi Lion", "Kirikou", "Astérix et Cléopâtre"]
+  },
+  {
+    "category": "Musique",
+    "question": "Qui a chanté 'Ne me quitte pas' ?",
+    "difficulty": 1,
+    "options": ["Jacques Brel", "Édith Piaf", "Charles Aznavour", "Georges Brassens"]
+  },
+  {
+    "category": "Musique",
+    "question": "Quel groupe français a sorti le tube 'Dernière Danse' ?",
+    "difficulty": 2,
+    "options": ["Indochine", "Téléphone", "Indila", "Stromae"]
+  },
+  {
+    "category": "Musique",
+    "question": "Quel chanteur est surnommé le 'Taulier' en France ?",
+    "difficulty": 3,
+    "options": ["Johnny Hallyday", "Claude François", "Francis Cabrel", "Calogero"]
+  },
+  {
+    "category": "Musique",
+    "question": "Quel célèbre compositeur est l’auteur de 'La Flûte enchantée' ?",
+    "difficulty": 2,
+    "options": ["Mozart", "Beethoven", "Bach", "Chopin"]
+  },
+  {
+    "category": "Sport",
+    "question": "Qui a remporté la Coupe du Monde 2018 avec l'équipe de France ?",
+    "difficulty": 1,
+    "options": ["Didier Deschamps (entraîneur)", "Zinédine Zidane", "Michel Platini", "Jean-Pierre Papin"]
+  },
+  {
+    "category": "Sport",
+    "question": "Quel joueur de tennis français a remporté Roland-Garros en 2023 ?",
+    "difficulty": 3,
+    "options": ["Novak Djokovic", "Rafael Nadal", "Gaël Monfils", "Aucun (aucun Français n'a gagné en 2023)"]
+  },
+  {
+    "category": "Sport",
+    "question": "Combien de joueurs composent une équipe de football ?",
+    "difficulty": 1,
+    "options": ["11", "7", "9", "15"]
+  },
+  {
+    "category": "Sport",
+    "question": "Dans quelle discipline Tony Parker a-t-il été champion ?",
+    "difficulty": 2,
+    "options": ["Basket-ball", "Football", "Tennis", "Handball"]
+  },
+  {
+    "category": "Langue Française",
+    "question": "Combien de voyelles existe-t-il en français ?",
+    "difficulty": 2,
+    "options": ["6", "5", "12", "7"]
+  },
+  {
+    "category": "Langue Française",
+    "question": "Quel mot est masculin ?",
+    "difficulty": 1,
+    "options": ["Un horloge", "Une horloge", "Un table", "Une stylo"]
+  },
+  {
+    "category": "Langue Française",
+    "question": "Quel est le synonyme de 'rapide' ?",
+    "difficulty": 1,
+    "options": ["Vite", "Grand", "Lent", "Petit"]
+  },
+  {
+    "category": "Langue Française",
+    "question": "Quelle est la nature du mot 'beau' ?",
+    "difficulty": 2,
+    "options": ["Adjectif", "Nom", "Verbe", "Pronom"]
+  },
+  {
+    "category": "Pop Culture",
+    "question": "Quelle émission culte des années 90 était présentée par Nagui ?",
+    "difficulty": 3,
+    "options": ["Taratata", "N'oubliez pas les paroles", "Question pour un champion", "Star Academy"]
+  },
+  {
+    "category": "Pop Culture",
+    "question": "Qui est le créateur de la bande dessinée 'Astérix' ?",
+    "difficulty": 2,
+    "options": ["René Goscinny et Albert Uderzo", "Hergé", "Jean Graton", "Zep"]
+  },
+  {
+    "category": "Pop Culture",
+    "question": "Quel est le nom du sorcier dans 'Harry Potter' ?",
+    "difficulty": 1,
+    "options": ["Harry Potter", "Frodon", "Hermione", "Draco Malfoy"]
+  },
+  {
+    "category": "Pop Culture",
+    "question": "À quel artiste associe-t-on la chanson 'Shape of You' ?",
+    "difficulty": 2,
+    "options": ["Ed Sheeran", "Justin Bieber", "Ariana Grande", "Coldplay"]
+  }
+]

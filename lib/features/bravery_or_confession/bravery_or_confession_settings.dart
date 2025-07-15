@@ -22,12 +22,13 @@ class BraveryOrConfessionSettings extends ConsumerWidget {
       child: Scaffold(
         body: Container(
           alignment: Alignment.center,
-          child: FractionallySizedBox(        
+          child: FractionallySizedBox(
             widthFactor: 0.9,
             heightFactor: 0.9,
             child: Card(
+              color: appColors.background,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
@@ -71,92 +72,107 @@ class BraveryOrConfessionSettings extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 22),
-          
-                  const SectionLabel("Nombre de Questions :"),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: _questionOptions.map((q) {
-                      final selected = ref.watch(gameSettingsProvider).gameSettings.nbQuestion == q;
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: SelectButton(
-                            label: q.toString(),
-                            selected: selected,
-                            onTap: () => ref.read(gameSettingsProvider).setNbQuestion(q),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SectionLabel("Nombre de Questions :"),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: _questionOptions.map((q) {
+                                final selected = ref.watch(gameSettingsProvider).gameSettings.nbQuestion == q;
+                                return Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                                    child: SelectButton(
+                                      label: q.toString(),
+                                      selected: selected,
+                                      onTap: () => ref.read(gameSettingsProvider).setNbQuestion(q),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SectionLabel("Niveau de Difficultés :"),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: _difficultyOptions.map((d) {
+                                final selected = ref.watch(gameSettingsProvider).gameSettings.difficulty == d;
+                                return Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                                    child: SelectButton(
+                                      label: "+" * d,
+                                      selected: selected,
+                                      onTap: () => ref.read(gameSettingsProvider).setDifficulty(d),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SectionLabel("Styles des Questions :"),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: _styleOptions.map((s) {
+                                final selected = ref.watch(gameSettingsProvider).gameSettings.style == s;
+                                return Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                                    child: SelectButton(
+                                      label: s,
+                                      selected: selected,
+                                      onTap: () => ref.read(gameSettingsProvider).setStyle(s),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => BraveryOrConfessionGame(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: appColors.accent,
+                              foregroundColor: appColors.textLight,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                            ),
+                            child: const Text("Lancer ce jeu"),
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 18),
-          
-                  const SectionLabel("Niveau de Difficultés :"),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: _difficultyOptions.map((d) {
-                      final selected = ref.watch(gameSettingsProvider).gameSettings.difficulty == d;
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: SelectButton(
-                            label: "+" * d,
-                            selected: selected,
-                            onTap: () => ref.read(gameSettingsProvider).setDifficulty(d),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 18),
-          
-                  const SectionLabel("Styles des Questions :"),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: _styleOptions.map((s) {
-                      final selected = ref.watch(gameSettingsProvider).gameSettings.style == s;
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: SelectButton(
-                            label: s,
-                            selected: selected,
-                            onTap: () => ref.read(gameSettingsProvider).setStyle(s),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 22),
-          
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => BraveryOrConfessionGame(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: appColors.accent,
-                        foregroundColor: appColors.textLight,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        textStyle: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
-                      child: const Text("Lancer ce jeu"),
+                      ],
                     ),
                   ),
                 ],
